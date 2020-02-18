@@ -4,12 +4,12 @@ import os
 from post import PostModel
 
 class PostRepository(object):
-    def __init__(self,host: str, port: int, user: str, password:str,database: str):
+    def __init__(self):
         self.connector = pymysql.connect(
             host=os.environ["DATABASE_HOST"],
             user=os.environ["DATABASE_USER"],
-            port=os.environ["DATABASE_PORT"],
-            password=os.environ["DATABASE_PASSWORd"],
+            port=int(os.environ["DATABASE_PORT"]),
+            password=os.environ["DATABASE_PASSWORD"],
             database=os.environ["DATABASE_NAME"]
         )
         self.cursor = self.connector.cursor()
